@@ -1,5 +1,4 @@
 //
-//
 //  PhotoPreviewCell.swift
 //  PhotoPreview
 //
@@ -132,25 +131,25 @@ class PhotoPreviewCell: UICollectionViewCell {
         }
     }
 
-    // 比例以保持内容的宽高比，同时确保内容完整地填入视图边界而不会超出
+    // Calculates the aspect fit rect to maintain content's aspect ratio while ensuring full visibility
     static func calculateAspectFitRect(for imageSize: CGSize) -> CGRect {
         let containerSize: CGSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        // 计算宽高比
+        // Calculate aspect ratios
         let imageAspectRatio = imageSize.width / imageSize.height
         let containerAspectRatio = containerSize.width / containerSize.height
 
         var finalSize: CGSize
 
-        // 根据宽高比选择缩放方式
+        // Determine scaling method based on aspect ratios
         if imageAspectRatio > containerAspectRatio {
-            // 图片更宽，基于容器的宽度计算高度
+            // Wider image: calculate height based on container width
             finalSize = CGSize(width: containerSize.width, height: containerSize.width / imageAspectRatio)
         } else {
-            // 图片更高，基于容器的高度计算宽度
+            // Taller image: calculate width based on container height
             finalSize = CGSize(width: containerSize.height * imageAspectRatio, height: containerSize.height)
         }
 
-        // 计算居中坐标
+        // Calculate centering coordinates
         let xOffset = (containerSize.width - finalSize.width) / 2
         let yOffset = (containerSize.height - finalSize.height) / 2
 
@@ -160,20 +159,20 @@ class PhotoPreviewCell: UICollectionViewCell {
     func configureForNewImage(animated: Bool = true) {
         guard let source = self.imageInfo else { return }
 
-        // 最小只能缩放到 scrollView.frame.size.width 的倍率
+        // Minimum scale factor relative to scrollView's width
         let minScale: CGFloat = 0.5
         let width = self.scrollView.frame.size.width / minScale
         var height: CGFloat = 0
 
-        // 处理 UIImageImage
+        // Handle UIImageImage
         if let uiimage = source.image as? PhotoPreviewUIImageImage {
             height = uiimage.image.size.height * width / uiimage.image.size.width
             imageView.configure(image: uiimage.image)
-            // 更新 ImageView 的 frame 和 ScrollView 的设置
+            // Update imageView frame and scrollView settings
             updateImageViewFrame(width: width, height: height)
         } else if let uiimageUrl = source.image as? PhotoPreviewURLImage {
             if source.size.width == 0 || source.size.height == 0 {
-                // 若图像尺寸未知，通过 URL 配置图像
+                // Configure via URL when image dimensions are unknown
                 imageView.configure(url: uiimageUrl.url) { [weak self] image in
                     guard let self = self, let downloadedImage = image else { return }
                     height = downloadedImage.size.height * width / downloadedImage.size.width
@@ -183,12 +182,12 @@ class PhotoPreviewCell: UICollectionViewCell {
             } else {
                 height = source.size.height * width / source.size.width
                 imageView.configure(url: uiimageUrl.url)
-                // 更新 ImageView 的 frame 和 ScrollView 的设置
+                // Update imageView frame and scrollView settings
                 updateImageViewFrame(width: width, height: height)
             }
         }
 
-        // 出场动画
+        // Entrance animation
         if animated {
             imageView.alpha = 0.0
             UIView.animate(withDuration: 0.5) {
@@ -197,7 +196,7 @@ class PhotoPreviewCell: UICollectionViewCell {
         }
     }
 
-    // 用于设置 ImageView 的 frame 和 scrollView
+    // Updates imageView frame and scrollView configuration
     private func updateImageViewFrame(width: CGFloat, height: CGFloat) {
         imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         setZoomScale()
@@ -242,7 +241,7 @@ extension PhotoPreviewCell: UIScrollViewDelegate {
             // Center the image on screen
             scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
         } else {
-            // Limit the image panning to the screen bounds
+            // Limit panning to screen bounds
             scrollView.contentSize = imageViewSize
         }
     }
