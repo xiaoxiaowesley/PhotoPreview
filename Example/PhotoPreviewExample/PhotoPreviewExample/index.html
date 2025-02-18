@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebView Example</title>
+    <style>
+        /* Simple CSS style for image layout */
+        .image-container {
+            display: flex;
+            justify-content: center; /* Center align */
+        }
+        .image-container img {
+            width: 50%; /* Each image takes 50% of the width */
+            aspect-ratio: 1 / 1; /* Ensure height matches width */
+            object-fit: cover; /* Maintain image aspect ratio, cropping to fill */
+            cursor: pointer; /* Show pointer cursor on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, WebView</h1>
+    <div class="image-container">
+        <img src="https://gw.alicdn.com/imgextra/i2/O1CN012OzF5q1GCtWbte4fN_!!6000000000587-0-tps-4672-7008.jpg" alt="Image 1" onclick="imageClicked(0)">
+        <img src="https://gw.alicdn.com/imgextra/i3/O1CN01GG6xip1qK3tHXYZUi_!!6000000005476-0-tps-768-1024.jpg" alt="Image 2" onclick="imageClicked(1)">
+    </div>
+
+    <script>
+        // Handle image click events and pass the index
+        function imageClicked(index) {
+            // Get all image data information
+            const images = document.querySelectorAll('.image-container img');
+            const data = Array.from(images).map(image => {
+                // Get image position and size information
+                const rect = image.getBoundingClientRect();
+                return {
+                    x: rect.x,
+                    y: rect.y,
+                    width: rect.width,
+                    height: rect.height,
+                    imageUrl: image.src,
+                    imageSize: {
+                        width: image.naturalWidth,
+                        height: image.naturalHeight
+                    }
+                };
+            });
+
+            // Send all image data as an array to Swift
+            // Also send the clicked image index
+            window.webkit.messageHandlers.nativeFunction.postMessage(JSON.stringify({ data: data, index: index }));
+        }
+    </script>
+</body>
+</html>
