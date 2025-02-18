@@ -29,14 +29,6 @@ public struct PhotoPreviewURLImage: PhotoPreviewImageProtocol {
     }
 
     public func getImage(completion: @escaping (UIImage?) -> Void) {
-        // 使用 SDWebImage 异步加载图片
-//        if let u = URL(string: url) {
-//            SDWebImageManager.shared().downloadImage(with: u, module: TBCDNImageModuleDefault, imageSize: .zero, cutType: ImageCutType.none, progress: nil) { image, error, cacheType, b, url in
-//                completion(image)
-//            }
-//        } else {
-//            completion(nil)
-//        }
     }
 }
 

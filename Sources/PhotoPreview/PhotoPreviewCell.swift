@@ -19,38 +19,6 @@ class PhotoPreviewCell: UICollectionViewCell {
     open var scrollView: UIScrollView
     public let imageView: CustomImageView
 
-    // 下载按钮
-    let downloadButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "download"), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        button.layer.cornerRadius = 20
-        button.layer.masksToBounds = true
-//        button.addBlurEffect()
-        return button
-    }()
-
-    // 查看原图按钮
-    let originalImageButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("查看原图", for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 23.5, bottom: 0, right: 23.5)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.layer.cornerRadius = 20
-        button.layer.masksToBounds = true
-//        button.addBlurEffect()
-        return button
-    }()
-
-    /// 加载菊花
-    var loadingview: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .medium)
-        indicator.color = .black
-        indicator.hidesWhenStopped = true
-        return indicator
-    }()
-
     override init(frame: CGRect) {
 
         imageView = CustomImageView()
@@ -147,7 +115,6 @@ class PhotoPreviewCell: UICollectionViewCell {
         scrollView.addSubview(imageView)
         scrollView.addConstraints(imageViewConstraints)
         scrollView.delegate = self
-        imageView.delegate = self
 
         setupGestureRecognizer()
     }
@@ -235,7 +202,6 @@ class PhotoPreviewCell: UICollectionViewCell {
         imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         setZoomScale()
         scrollViewDidZoom(scrollView)
-        originalImageButton.isHidden = true
     }
 
     // MARK: Private Methods
@@ -255,27 +221,6 @@ class PhotoPreviewCell: UICollectionViewCell {
         scrollView.minimumZoomScale = min(widthScale, heightScale)
         scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
     }
-
-    // MARK: - Handlers
-    @objc private func handleDownload() {
-        imageView.saveImageToLocal()
-    }
-
-    @objc private func handleOriginalImage() {
-//        imageView.downloadOriginalImage { receivedSize, expectedSize in
-//            let text = "\(NSLocalizedString("View original image", tableName: "Common", bundle: Bundle.localizedBundle(), comment: "查看原图")) \(Int(receivedSize) * 100 / Int(expectedSize))%"
-//
-//            Log.d("PhotoPreviewCell", "progress:\(Int(receivedSize) * 100 / Int(expectedSize))%")
-//            self.originalImageButton.setTitle(text, for: .normal)
-//
-//        } completion: { success, image, error in
-//            if success {
-//                self.originalImageButton.isHidden = true
-//            }
-//        }
-
-    }
-
 }
 
 // MARK: UIScrollViewDelegate Methods
@@ -300,12 +245,5 @@ extension PhotoPreviewCell: UIScrollViewDelegate {
             // Limit the image panning to the screen bounds
             scrollView.contentSize = imageViewSize
         }
-    }
-
-}
-
-extension PhotoPreviewCell: CustomImageViewDelegate {
-    func didLoadOriginalImage(url: String) {
-        self.originalImageButton.isHidden = true
     }
 }

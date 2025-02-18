@@ -10,6 +10,7 @@
 		1E24A2692D633BFE0038245B /* PhotoPreview in Frameworks */ = {isa = PBXBuildFile; productRef = 1E24A2682D633BFE0038245B /* PhotoPreview */; };
 		1E24A26F2D633CDA0038245B /* PhotoPreview in Frameworks */ = {isa = PBXBuildFile; productRef = 1E24A26E2D633CDA0038245B /* PhotoPreview */; };
 		1E32699D2D6336180097F5E5 /* PhotoPreview in Frameworks */ = {isa = PBXBuildFile; productRef = 1E32699C2D6336180097F5E5 /* PhotoPreview */; };
+		1E3F20242D646EC60058B148 /* PhotoPreview in Frameworks */ = {isa = PBXBuildFile; productRef = 1E3F20232D646EC60058B148 /* PhotoPreview */; };
 		1E71103A2D6353980035F8B1 /* PhotoPreview in Frameworks */ = {isa = PBXBuildFile; productRef = 1E7110392D6353980035F8B1 /* PhotoPreview */; };
 		1E71103D2D6355910035F8B1 /* PhotoPreview in Frameworks */ = {isa = PBXBuildFile; productRef = 1E71103C2D6355910035F8B1 /* PhotoPreview */; };
 		1E7110402D63594D0035F8B1 /* PhotoPreview in Frameworks */ = {isa = PBXBuildFile; productRef = 1E71103F2D63594D0035F8B1 /* PhotoPreview */; };
@@ -76,6 +77,7 @@
 			files = (
 				1E71103A2D6353980035F8B1 /* PhotoPreview in Frameworks */,
 				1E24A2692D633BFE0038245B /* PhotoPreview in Frameworks */,
+				1E3F20242D646EC60058B148 /* PhotoPreview in Frameworks */,
 				1E24A26F2D633CDA0038245B /* PhotoPreview in Frameworks */,
 				1E32699D2D6336180097F5E5 /* PhotoPreview in Frameworks */,
 				1E7110402D63594D0035F8B1 /* PhotoPreview in Frameworks */,
@@ -146,6 +148,7 @@
 				1E7110392D6353980035F8B1 /* PhotoPreview */,
 				1E71103C2D6355910035F8B1 /* PhotoPreview */,
 				1E71103F2D63594D0035F8B1 /* PhotoPreview */,
+				1E3F20232D646EC60058B148 /* PhotoPreview */,
 			);
 			productName = PhotoPreviewExample;
 			productReference = 1E3269512D6335DB0097F5E5 /* PhotoPreviewExample.app */;
@@ -230,7 +233,7 @@
 			mainGroup = 1E3269482D6335DB0097F5E5;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				1E71103E2D63594D0035F8B1 /* XCLocalSwiftPackageReference "../../../PhotoPreview" */,
+				1E3F20222D646EC60058B148 /* XCLocalSwiftPackageReference "../../../PhotoPreview" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1E3269522D6335DB0097F5E5 /* Products */;
@@ -601,7 +604,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		1E71103E2D63594D0035F8B1 /* XCLocalSwiftPackageReference "../../../PhotoPreview" */ = {
+		1E3F20222D646EC60058B148 /* XCLocalSwiftPackageReference "../../../PhotoPreview" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../../PhotoPreview;
 		};
@@ -617,6 +620,10 @@
 			productName = PhotoPreview;
 		};
 		1E32699C2D6336180097F5E5 /* PhotoPreview */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PhotoPreview;
+		};
+		1E3F20232D646EC60058B148 /* PhotoPreview */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PhotoPreview;
 		};

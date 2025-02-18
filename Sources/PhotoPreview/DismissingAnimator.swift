@@ -37,13 +37,14 @@ class DismissingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             return
         }
 
-        // 开始位置
+        // Begin Frame
         let beginFrame = originCell.imageView.superview?.convert(originCell.imageView.frame, to: UIApplication.shared.windows.first) ?? CGRect.zero
 
         let viewToAnimate: UIImageView = UIImageView()
         viewToAnimate.contentMode = .scaleAspectFit
         viewToAnimate.frame = beginFrame
-        // 从缓存中获取图片数据
+        
+        // initial image
         if imageInfo.image is PhotoPreviewUIImageImage {
             let uiimage = imageInfo.image as! PhotoPreviewUIImageImage
             viewToAnimate.image = uiimage.image
@@ -56,7 +57,7 @@ class DismissingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
         containerView.addSubview(viewToAnimate)
 
-        // 结束位置
+        // end frame
         var endFrame = imageInfo.frame!
         viewToAnimate.clipsToBounds = true
         viewToAnimate.contentMode = self.imageInfo.contentMode
@@ -65,7 +66,7 @@ class DismissingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         UIView.animate(
             withDuration: animationDuration,
             animations: {
-                previewViewController.view.alpha = 0.0  // 从视图控制器淡出
+                previewViewController.view.alpha = 0.0
                 viewToAnimate.frame = endFrame
             }
         ) { _ in
