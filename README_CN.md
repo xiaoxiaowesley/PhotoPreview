@@ -18,9 +18,9 @@ iOS 轻量级图片预览组件，支持手势缩放、跨平台兼容（Web/Flu
 您可以使用 Swift 包管理器（SPM）安装 `PhotoPreview`。具体步骤如下：
 
 1. 打开您的 Xcode 项目。
-2. 选择 `文件` > `添加包...`。
-3. 输入 `PhotoPreview` 的仓库 URL。
-4. 选择您想要安装的版本，然后点击 `添加包`。
+2. 选择 `File` > `Add Packages...`.
+3. 输入 `https://github.com/xiaoxiaowesley/PhotoPreview.git` 的仓库 URL。
+4. 选择您想要安装的版本，然后点击 `Add Package`。
 
 ## 使用方法
 

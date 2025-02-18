@@ -18,7 +18,7 @@ You can install `PhotoPreview` using Swift Package Manager (SPM). To do this, fo
 
 1. Open your Xcode project.
 2. Go to `File` > `Add Packages...`.
-3. Enter the repository URL for `PhotoPreview`.
+3. Enter the repository URL for `https://github.com/xiaoxiaowesley/PhotoPreview.git`.
 4. Select the version you want to install, and click `Add Package`.
 
 ## Usage
