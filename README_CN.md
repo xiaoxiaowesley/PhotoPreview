@@ -24,8 +24,6 @@ iOS 轻量级图片预览组件，支持手势缩放、跨平台兼容（Web/Flu
 
 ## 使用方法
 
-### 在 `ViewController` 中的示例使用
-
 有两种主要方法可以使用 `PhotoPreviewViewController`：通过原生 UIImageView 或者 WebView。
 
 #### 1. 使用 UIImageView

@@ -23,9 +23,8 @@ You can install `PhotoPreview` using Swift Package Manager (SPM). To do this, fo
 
 ## Usage
 
-### Example Usage in `ViewController`
 
-There are two main ways to use `PhotoPreviewViewController`: through a native UIImageView or a WebView.
+There are two main ways to use `PhotoPreviewViewController`: through a native UIImageView or a Cross Platform Usage (In WebView).
 
 #### 1. Using UIImageView
 
