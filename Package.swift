@@ -12,13 +12,12 @@ let package = Package(
             targets: ["PhotoPreview"]),
     ],
     dependencies: [
-        // 添加 SDWebImage 依赖
-        .package(url: "https://github.com/SDWebImage/SDWebImage.git", from: "5.20.0"), // 确保使用适当版本
+        .package(url: "https://github.com/SDWebImage/SDWebImage.git", from: "5.20.0"),
     ],
     targets: [
         .target(
             name: "PhotoPreview",
-            dependencies: ["SDWebImage"]), // 引用 SDWebImage
+            dependencies: ["SDWebImage"]),
         .testTarget(
             name: "PhotoPreviewTests",
             dependencies: ["PhotoPreview"]),

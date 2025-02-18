@@ -31,7 +31,6 @@ class PresentingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             return
         }
 
-        // 开始beginFrame ，这里为了和webview保持一致，使用的是像素单位
         var beginFrame = imageInfo.frame!
         let viewToAnimate = UIImageView(frame: beginFrame)
         viewToAnimate.clipsToBounds = true

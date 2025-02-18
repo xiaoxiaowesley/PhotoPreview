@@ -33,7 +33,6 @@ public struct PhotoPreviewURLImage: PhotoPreviewImageProtocol {
 }
 
 
-// 定义资源类型
 public struct ImageInfo {
     public struct Size {
         let width: CGFloat
